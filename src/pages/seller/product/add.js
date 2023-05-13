@@ -41,7 +41,10 @@ export default function Page() {
         <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full">
             {!!user && (
                 <div className="text-lg font-medium flex justify-between mb-8">
-                    <span>Welcome, {user?.S_Name || ""}</span>
+                    <span>
+                        Welcome, {user?.S_Name || ""}
+                        <a className="text-sm text-blue-600 ms-2" href="/seller/account">Edit</a>
+                    </span>
                     <a href="/signout" className="text-sm rounded uppercase px-2 py-1 bg-red-500 text-white hover:bg-red-700 font-normal ms-4">Signout</a>
                 </div>
             )}

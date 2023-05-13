@@ -26,7 +26,7 @@ export default function Home() {
       })
       .finally(function () {
         setCookie('S_User', {
-          id: 1,
+          S_Id: 1,
           S_Name: 'John Doe',
           S_Email: 'john@doe.com',
           S_Phone: '1234567890',
@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   return (
-    <div className="grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">  
+    <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full">
       <form onSubmit={handleSubmit(formSubmit)}>
         <div>
           <div className="mb-4">
@@ -71,7 +71,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="formData">
+        <div className="flex justify-between">
+          <a href="/register" className="bg-blue-500 hover:bg-blue-700 text-white text-sm uppercase font-bold tracking-wider py-2 px-4 rounded cursor-pointer">Register Here</a>
           <input className="bg-emerald-500 hover:bg-emerald-700 text-white text-sm uppercase font-bold tracking-wider py-2 px-4 rounded cursor-pointer" type="submit" value="Sign In" />
         </div>
       </form>

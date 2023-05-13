@@ -26,13 +26,13 @@ export default function Register() {
           console.log(error);
       })
       .finally(function () {
-          setCookie('S_User', { id: 1, ...formData }, { path: '/seller' });
+          setCookie('S_User', { S_Id: 1, ...formData }, { path: '/seller' });
           window.location.href = "/seller/dashboard"
       });
   };
 
   return (
-    <div className="grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">  
+    <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full">
       <form onSubmit={handleSubmit(formSubmit)}>
         <div>
             <div className="mb-4">
@@ -135,7 +135,8 @@ export default function Register() {
             </div>
         </div>
 
-        <div className="formData">
+        <div className="flex justify-between">
+          <a href="/" className="bg-blue-500 hover:bg-blue-700 text-white text-sm uppercase font-bold tracking-wider py-2 px-4 rounded cursor-pointer">&lt; Go back to Login</a>
           <input className="bg-emerald-500 hover:bg-emerald-700 text-white text-sm uppercase font-bold tracking-wider py-2 px-4 rounded cursor-pointer" type="submit" value="Register" />
         </div>
       </form>

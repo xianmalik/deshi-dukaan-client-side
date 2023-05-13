@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
 export default function Signout() {
     const [cookies, setCookie, deleteCookie] = useCookies(['S_User'])
 
-    userEffect(() => {
+    useEffect(() => {
     axios
         .post('http://localhost:3000/api/signout')
         .then(function (response) {
