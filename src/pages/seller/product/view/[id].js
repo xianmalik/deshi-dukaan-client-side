@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
 import Header from '@/components/header';
+import Footer from '@/components/footer';
  
 export default function Page() {
   const {
@@ -46,9 +47,9 @@ export default function Page() {
   }
 
   return (
-    <div className="grid text-center lg:mb-0 lg:text-left">
+    <div className="flex flex-col h-full min-h-screen">
         <Header />
-        <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full">
+        <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full flex-1">
             <h3 className="text-sm text-gray-700">
             <a href="#" className="font-medium text-lg">
                 {product.P_Name}
@@ -60,6 +61,7 @@ export default function Page() {
             <p className="mt-1 text-sm font-medium text-gray-500">Quantity: {product.P_Qty}</p>
             <p className="mt-1 text-sm font-medium text-gray-500">Warranty: {formatDate(product.P_Waranty)}</p>
         </div>
+        <Footer />
     </div>
   )
 }

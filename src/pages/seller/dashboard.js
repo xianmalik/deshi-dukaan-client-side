@@ -3,6 +3,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 export default function Register() {
   const {
@@ -70,9 +71,9 @@ export default function Register() {
   }
 
   return (
-    <div className="grid text-center lg:mb-0 lg:text-left">
+    <div className="flex flex-col h-full min-h-screen">
         <Header />
-        <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full">
+        <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full flex-1">
             <h2 className="text-2xl font-bold tracking-tight text-gray-900">Your Products</h2>
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 xl:gap-x-4">
                 {products.map((product) => (
@@ -113,6 +114,7 @@ export default function Register() {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
   )
 }

@@ -16,7 +16,7 @@ export default function Header() {
     }, [])
 
     return (user) ? (
-        <div className="mb-8 shadow py-6">
+        <div className="mb-8 border-b shadow py-6">
             <div className="text-lg flex items-center justify-between mx-auto max-w-screen-lg lg:max-w-screen-xl w-full">
                 <div className="text-gray-700">
                     Welcome, <span className="font-bold text-gray-800">{user?.S_Name || ""}</span>

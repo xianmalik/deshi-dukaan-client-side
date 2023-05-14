@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
 import Header from '@/components/header';
+import Footer from '@/components/footer';
  
 export default function Page() {
   const {
@@ -29,9 +30,9 @@ export default function Page() {
   }
 
   return (
-    <div className="grid text-center lg:mb-0 lg:text-left">
+    <div className="flex flex-col h-full min-h-screen">
         <Header />
-        <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full">
+        <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full flex-1">
             <h2 className="text-3xl font-bold text-gray-700 mb-4">Add a new product</h2>
         
             <form onSubmit={handleSubmit(formSubmit)} className='grid grid-cols-2 gap-4 gap-x-6'>
@@ -112,6 +113,7 @@ export default function Page() {
             </form>
 
         </div>
+        <Footer />
     </div>
   )
 }
