@@ -8,7 +8,7 @@ export default function Document() {
       <Head />
       <body>
       <CookiesProvider>
-        <div className="min-h-screen flex-col items-center justify-between p-24">
+        <div className="min-h-screen flex-col items-center justify-between">
           <Main />
         </div>
       </CookiesProvider>

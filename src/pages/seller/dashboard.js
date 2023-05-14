@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
+import Header from "@/components/header";
 
 export default function Register() {
   const {
@@ -10,18 +11,11 @@ export default function Register() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [user, setUser] = useState({});
-  const [products, setProducts] = useState([]);
 
+  const [products, setProducts] = useState([]);
   const [cookies, setCookie] = useCookies(['S_User'], { path: '/'});
   
   useEffect(() => {
-    if (!cookies.S_User) {
-        window.location.href = "/"
-    }
-    
-    setUser(cookies.S_User);
-
     axios
         .get(`http://localhost:3000/api/view-products/${cookies.S_User?.id}`)
         .then(function (response) {
@@ -77,16 +71,8 @@ export default function Register() {
 
   return (
     <div className="grid text-center lg:mb-0 lg:text-left">
+        <Header />
         <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full">
-            {!!user && (
-                <div className="text-lg font-medium flex justify-between mb-8">
-                    <span>
-                        Welcome, {user?.S_Name || ""}
-                        <a className="text-sm text-blue-600 ms-2" href="/seller/account">Edit</a>
-                    </span>
-                    <a href="/signout" className="text-sm rounded uppercase px-2 py-1 bg-red-500 text-white hover:bg-red-700 font-normal ms-4">Signout</a>
-                </div>
-            )}
             <h2 className="text-2xl font-bold tracking-tight text-gray-900">Your Products</h2>
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 xl:gap-x-4">
                 {products.map((product) => (

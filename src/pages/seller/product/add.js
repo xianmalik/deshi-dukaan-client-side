@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from 'next/router';
 import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
+import Header from '@/components/header';
  
 export default function Page() {
   const {
@@ -11,16 +12,7 @@ export default function Page() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [user, setUser] = useState({});
   const [cookies, setCookie] = useCookies(['S_User'], { path: '/'});
-
-  useEffect(() => {
-    if (!cookies.S_User) {
-        window.location.href = "/"
-    }
-    
-    setUser(cookies.S_User);
-  }, [cookies]);
 
   const formSubmit = (data) => {
     axios
@@ -38,22 +30,13 @@ export default function Page() {
 
   return (
     <div className="grid text-center lg:mb-0 lg:text-left">
+        <Header />
         <div className="mx-auto max-w-screen-lg py-16 lg:max-w-screen-xl w-full">
-            {!!user && (
-                <div className="text-lg font-medium flex justify-between mb-8">
-                    <span>
-                        Welcome, {user?.S_Name || ""}
-                        <a className="text-sm text-blue-600 ms-2" href="/seller/account">Edit</a>
-                    </span>
-                    <a href="/signout" className="text-sm rounded uppercase px-2 py-1 bg-red-500 text-white hover:bg-red-700 font-normal ms-4">Signout</a>
-                </div>
-            )}
-
             <h2 className="text-3xl font-bold text-gray-700 mb-4">Add a new product</h2>
         
-            <form onSubmit={handleSubmit(formSubmit)}>
-                <div className="mb-4">
-                    <label className="text-gray-600 font-medium mb-2">Name</label>
+            <form onSubmit={handleSubmit(formSubmit)} className='grid grid-cols-2 gap-4 gap-x-6'>
+                <div>
+                    <label className="text-gray-600 font-medium mb-1 block">Name</label>
                     <input
                         type="text"
                         name="name"
@@ -66,8 +49,8 @@ export default function Page() {
                         <div className="mb-3 text-normal text-red-500 ">{errors.P_Name.message}</div>
                     )}
                 </div>
-                <div className="mb-4">
-                    <label className="text-gray-600 font-medium mb-2">Description</label>
+                <div>
+                    <label className="text-gray-600 font-medium mb-1 block">Description</label>
                     <input
                         type="text"
                         name="desc"
@@ -80,8 +63,8 @@ export default function Page() {
                         <div className="mb-3 text-normal text-red-500 ">{errors.P_Desc.message}</div>
                     )}
                 </div>
-                <div className="mb-4">
-                    <label className="text-gray-600 font-medium mb-2">Price</label>
+                <div>
+                    <label className="text-gray-600 font-medium mb-1 block">Price</label>
                     <input
                         type="number"
                         name="price"
@@ -94,8 +77,8 @@ export default function Page() {
                         <div className="mb-3 text-normal text-red-500 ">{errors.P_Price.message}</div>
                     )}
                 </div>
-                <div className="mb-4">
-                    <label className="text-gray-600 font-medium mb-2">Quantity</label>
+                <div>
+                    <label className="text-gray-600 font-medium mb-1 block">Quantity</label>
                     <input
                         type="number"
                         name="qty"
@@ -108,8 +91,8 @@ export default function Page() {
                         <div className="mb-3 text-normal text-red-500 ">{errors.P_Qty.message}</div>
                     )}
                 </div>
-                <div className="mb-4">
-                    <label className="text-gray-600 font-medium mb-2">Warranty</label>
+                <div>
+                    <label className="text-gray-600 font-medium mb-1 block">Warranty</label>
                     <input
                         type="date"
                         name="qty"
@@ -123,12 +106,7 @@ export default function Page() {
                     )}
                 </div>
 
-                <div className="flex items-center justify-between gap-4 mt-8">
-                    <a
-                        href={`/seller/dashboard`}
-                        className="bg-emerald-500 hover:bg-emerald-700 text-white text-sm uppercase font-bold tracking-wider py-2 px-4 rounded cursor-pointer">
-                        {"< Back to all products"}
-                    </a>
+                <div className="mt-2 col-span-2">
                     <input className="bg-emerald-500 hover:bg-emerald-700 text-white text-sm uppercase font-bold tracking-wider py-2 px-4 rounded cursor-pointer" type="submit" value="Register" />
                 </div>
             </form>
